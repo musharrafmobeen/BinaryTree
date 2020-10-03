@@ -3,7 +3,6 @@ public class BinaryTree<T> {
 	private TreeNode<T> root;
 	private boolean isEmpty;
 	private Integer direction;
-	StringBuilder SB = new StringBuilder();
 	
 	class TreeNode<T> {
 		//Variable Declaration
