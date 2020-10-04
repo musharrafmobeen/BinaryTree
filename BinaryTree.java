@@ -1,8 +1,7 @@
 public class BinaryTree<T> {
 	//Variable Declaration
 	private TreeNode<T> root;
-	private boolean isEmpty;
-	private Integer direction;
+	
 	
 	class TreeNode<T> {
 		//Variable Declaration
@@ -40,19 +39,16 @@ public class BinaryTree<T> {
 	
 	//Constructor
 	public BinaryTree(){
-		root = new TreeNode<T>();
-		direction = 0;
-		isEmpty = true;
+		root = null;
 	}
 	
 
 	//Function to add data to a Binary Tree
-	public void insert(T Data) {
+	public void insert(T Data) {	
 		TreeNode<T> previous = root;
 		while(true) {
 			if(isEmpty()) {
 				root.setData(Data);
-				isEmpty = false;
 				break;
 			}
 			else if(Data.hashCode() < previous.getData().hashCode()) {
@@ -60,7 +56,6 @@ public class BinaryTree<T> {
 					TreeNode<T> newNode = new TreeNode<T>();
 					newNode.setData(Data);
 					previous.setLeftChild(newNode);
-					isEmpty = false;
 					break;
 				}
 				else {
@@ -73,7 +68,6 @@ public class BinaryTree<T> {
 					TreeNode<T> newNode = new TreeNode<T>();
 					newNode.setData(Data);
 					previous.setRightChild(newNode);
-					isEmpty = false;
 					break;
 				}
 				else {
@@ -86,7 +80,7 @@ public class BinaryTree<T> {
 	
 	//Function to Delete data from a Binary Tree
 	public TreeNode<T> Delete(T Data) {
-		direction = 0;
+		Integer direction = 0;
 		TreeNode<T> current = root;
 		TreeNode<T> parent = current;
 		if(!isEmpty()) {
@@ -121,7 +115,6 @@ public class BinaryTree<T> {
 	private void DeleteRecord(Integer direction, TreeNode<T> parent,TreeNode<T> node) {
 		if(node.getLeftChild() == null && node.getRightChild() == null) {
 			if(direction == 0) {
-				isEmpty = true;
 				root = null;
 			}
 			else if(direction == 1){
@@ -249,6 +242,6 @@ public class BinaryTree<T> {
 
 	//check to see if tree is empty
 	private boolean isEmpty() {
-		return isEmpty;
+		return root == null;
 	}
 }
